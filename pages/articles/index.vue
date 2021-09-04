@@ -22,21 +22,15 @@
       >
         {{ article.title }}
       </nuxt-link>
-      <!-- <nuxt-link
-        class="list-group-item list-group-item-action"
-        :to="'/articles/' + article._id"
-        v-for="article in articles"
-        :key="article._id"
-      >
-        {{ article.title }}
-      </nuxt-link> -->
 
     </div>
 
     <div class="alert alert-info" v-else>No records found.</div>
 
     <b-pagination
-      :total="pagination.total"
+      class="mt-4"
+      v-model="pagination.current"
+      :total-rows="pagination.total"
       :current.sync="pagination.current"
       :per-page="pagination.perPage"
     >
@@ -46,12 +40,6 @@
 
 <script>
 export default {
-  // async asyncData(context){
-  //   const {data} = await context.$axios.get('/api/articles')
-  //   return {
-  //     articles : data
-  //   }
-  // },
   data () {
     return {
       articles: [],
